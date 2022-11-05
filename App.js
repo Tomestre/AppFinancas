@@ -1,18 +1,16 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
+import firebase from './src/services/firebaseConnection';
+import { GestureResponderHandlers } from 'react-native';
+import Routes from './src/routes';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { Container, Titulo, Nome, BotaoSujeito, BotaoText } from './src/styles';
 
 export default function App() {
  return (
-   <Container>
-     <Titulo cor="#FF0000" >Sujeito Programador</Titulo>
-     <Nome>Olá Matheus!</Nome>
-
-     <BotaoSujeito onPress={ () => alert('CLICOU!') }>
-       <BotaoText>Entrar</BotaoText>
-     </BotaoSujeito>
-
-   </Container>
+   <NavigationContainer>
+     <StatusBar backgroundColor={'#131313'} barStyle='light-content'/>
+     <Routes/>
+   </NavigationContainer>
   );
 }
