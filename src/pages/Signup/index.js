@@ -1,7 +1,8 @@
 
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import { Platform } from "react-native";
 import {Background, Container, Logo, AreaInput, Input, SubmitButton, SubmitText} from './styled'
+import { AuthContext } from "../../context/auth";
 
 
 export default function SignUp(){
@@ -10,6 +11,11 @@ export default function SignUp(){
     const [password, setPassword] = useState('');
     const [nome, setNome] = useState('');
 
+    const {signUp} = useContext(AuthContext)
+
+    function hadleSignUp(){
+        signUp(email,password,nome);
+    }
     return (
       <Background>
         <Container
@@ -47,7 +53,7 @@ export default function SignUp(){
             </AreaInput>
             
 
-            <SubmitButton>
+            <SubmitButton onPress={hadleSignUp}>
                 <SubmitText>Cadastrar</SubmitText>
             </SubmitButton>
 

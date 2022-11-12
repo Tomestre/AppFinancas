@@ -1,11 +1,15 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
+
 import Home from "../pages/Home";
 
 const AppStack = createNativeStackNavigator()
 
-function AuthRoutes(){
+function AppRoutes(){
+
+
     return(
         <AppStack.Navigator>
             <AppStack.Screen name="Home" component={Home}/>
@@ -13,4 +17,4 @@ function AuthRoutes(){
     )
 }
 
-export default AuthRoutes;
+export default AppRoutes;
