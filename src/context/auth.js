@@ -14,7 +14,6 @@ function AuthProvider ({children}){
         async function loadStorage(){
             const storageUser = await AsyncStorage.getItem('Auth_user')
 
-            console.log(storageUser)
 
             if(storageUser){
             setUser( JSON.parse(storageUser) );
@@ -64,7 +63,7 @@ function AuthProvider ({children}){
         auth().createUserWithEmailAndPassword(email,password)
         .then(async (value)=> {
             let uid = value.user.uid;
-            console.log(uid)
+           
             
             await database().ref('users').child(uid).set({
                 saldo:0,
