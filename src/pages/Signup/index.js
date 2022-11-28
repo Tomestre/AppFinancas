@@ -1,6 +1,6 @@
 
 import React, {useContext, useState} from "react";
-import { Platform } from "react-native";
+import { ActivityIndicator, Platform } from "react-native";
 import {Background, Container, Logo, AreaInput, Input, SubmitButton, SubmitText} from './styled'
 import { AuthContext } from "../../context/auth";
 
@@ -11,7 +11,7 @@ export default function SignUp(){
     const [password, setPassword] = useState('');
     const [nome, setNome] = useState('');
 
-    const {signUp} = useContext(AuthContext)
+    const {signUp, loadingAuth} = useContext(AuthContext)
 
     function hadleSignUp(){
         signUp(email,password,nome);
@@ -38,7 +38,8 @@ export default function SignUp(){
                 autoCorrect={false}
                 autoCapitalize="none"
                 value={email}
-                onChangeText={(text)=> setEmail(text)}/>
+                onChangeText={(text)=> setEmail(text)}
+                />
             
             </AreaInput>
 
@@ -48,13 +49,18 @@ export default function SignUp(){
                 autoCorrect={false}
                 autoCapitalize="none"
                 value={password}
-                onChangeText={(text)=> setPassword(text)}/>
+                onChangeText={(text)=> setPassword(text)}
+                secureTextEntry={true}/>
             
             </AreaInput>
             
 
             <SubmitButton onPress={hadleSignUp}>
-                <SubmitText>Cadastrar</SubmitText>
+            {
+                        loadingAuth ? (
+                            <ActivityIndicator size={20} color='#FFF'/>
+                        ) :(
+                <SubmitText>Cadastrar</SubmitText>)}
             </SubmitButton>
 
         

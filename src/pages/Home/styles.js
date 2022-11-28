@@ -36,4 +36,10 @@ export const List = styled.FlatList`
 
 `;
 
+export const Area = styled.View`
+flex-direction: row;
+margin-left: 15px;
+align-items: baseline;
+`;
+
 
