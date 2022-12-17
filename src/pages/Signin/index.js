@@ -17,6 +17,7 @@ export default function SignIn(){
     const {signIn, loadingAuth} = useContext(AuthContext)
     
     function handleSignIn(){
+        console.log(email,password)
         signIn(email,password);
     }
 
